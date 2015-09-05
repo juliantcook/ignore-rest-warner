@@ -21,7 +21,8 @@ class IgnoreRestClassVisitor implements GroovyClassVisitor {
 
     private void warn(String message, MethodNode node) {
         String sample = sourceUnit.getSample(node.lineNumber, node.columnNumber, new Janitor())
-        System.err.println "WARNING: $message\n\n$sample"
+        System.err.println "WARNING: $message\n\n$sample\n\n" +
+                "\tat ${node.declaringClass.name}:${node.lineNumber}"
     }
 
     @Override
